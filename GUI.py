@@ -29,11 +29,11 @@ class Window(QMainWindow):
         
         wind_label = QLabel("Viento:")
         wind_edit = QLineEdit()
-       # wind_edit.setFrame(False)
+        wind_edit.setFrame(False)
         
         temperature_label = QLabel("Temperatura:")
         temperature_edit = QLineEdit()
-        #temperature_edit.setFrame(False)
+        temperature_edit.setFrame(False)
         
         sensation_label = QLabel("Sensación:")
         sensation_edit = QLineEdit()
@@ -74,10 +74,10 @@ class Window(QMainWindow):
 
         
         image_label = QLabel(self)
-        pixmap = QPixmap('mapa.jpg')
+        pixmap = QPixmap('recursos/mapa.jpg')
 
         
-       # Resize the image to a smaller size while maintaining aspect ratio
+       
         resized_pixmap = pixmap.scaled(600, 900, QtCore.Qt.AspectRatioMode.KeepAspectRatio, QtCore.Qt.TransformationMode.SmoothTransformation)
         image_label.setPixmap(resized_pixmap)
         
