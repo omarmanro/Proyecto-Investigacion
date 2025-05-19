@@ -10,7 +10,7 @@ import joblib
 
 # 1. Extraer los datos desde la base de datos
 def extraer_datos():
-    engine = create_engine('mssql+pyodbc://sa:Once@CHANG/MierdiInvestigacion?driver=SQL+Server&TrustServerCertificate=yes')
+    engine = create_engine('mssql+pyodbc://sa:Once@CHANG/MierdiInvestigacion?driver=ODBC+Driver+17+for+SQL+Server&TrustServerCertificate=yes&timeout=30')
     query = "SELECT DATE, LATITUDE, LONGITUDE, ELEVATION, WND_DIRECTION, WND_SPEED, CIG_HEIGHT, VIS_DISTANCE, TMP, DEW, SLP, LLOVIÓ FROM WeatherData"
     df = pd.read_sql(query, engine)
     return df
@@ -34,7 +34,7 @@ def create_sequences(data, target, seq_length):
         y.append(target[i+seq_length])
     return np.array(X), np.array(y)
 
-seq_length = 10  # Tomar los últimos 10 registros para predecir el siguiente
+seq_length = 15  # Tomar los últimos 15 registros para predecir el siguiente
 X, y = create_sequences(df_scaled, df['LLOVIÓ'].values, seq_length)
 
 # 5. División en entrenamiento y prueba
@@ -53,7 +53,7 @@ model = Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # 7. Entrenar el modelo
-model.fit(X_train, y_train, epochs=20, batch_size=16, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=13, batch_size=16, validation_data=(X_test, y_test))
 
 # 8. Guardar el modelo entrenado y el scaler
 model.save('modelo_lluvia_lstm.h5')
