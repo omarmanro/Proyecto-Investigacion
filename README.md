@@ -1,57 +1,56 @@
-# Proyecto-Investigacion
+# Aplicación Modular de Predicción de Lluvia
 
-Repositorio para documentar el proceso de creación de un proyecto sobre el uso de redes neuronales en la predicción de tormentas.
+Esta versión modularizada de la aplicación de predicción de lluvia ha sido estructurada siguiendo principios de diseño orientado a objetos para mejorar la organización, mantenibilidad y extensibilidad del código.
 
 ## Estructura del Proyecto
 
-### IA
-Contiene los scripts de Python utilizados para el análisis de datos y la implementación de modelos de redes neuronales.
+La aplicación se ha dividido en los siguientes módulos con responsabilidades específicas:
 
+- **WeatherAPIClient**: Maneja las llamadas a la API de OpenWeatherMap para obtener datos meteorológicos.
+- **WeatherDataProcessor**: Procesa y transforma los datos meteorológicos para su uso en el modelo de predicción.
+- **RainfallPredictor**: Realiza predicciones de lluvia utilizando un modelo LSTM entrenado.
+- **WeatherVisualizer**: Genera visualizaciones interactivas para representar los datos meteorológicos.
+- **StreamlitApp**: Gestiona la interfaz de usuario y coordina todos los componentes.
 
-### Entregables
-Incluye los documentos y archivos finales del proyecto.
+## Requisitos
 
-- `ENTREGABLE INV.docx`: Documento de entrega del proyecto.
-- `main.tex`: Documento en LaTeX con el contenido del proyecto.
-- `Mierdinvestigacion.pdf`: PDF generado a partir del archivo LaTeX.
+- Python 3.7 o superior
+- Bibliotecas requeridas: streamlit, pandas, numpy, folium, streamlit-folium, plotly, matplotlib, seaborn, tensorflow, keras, scikit-learn
 
-### Datos
-Contiene los archivos de datos utilizados en el proyecto.
+## Instalación
 
-- `DatosLimpios.rar`: Archivo comprimido con los datos limpios.
+1. Clone este repositorio
+2. Instale las dependencias:
+   ```
+   pip install -r requirements.txt
+   ```
 
-### Recursos
-Incluye recursos adicionales utilizados en el proyecto.
+## Ejecución de la Aplicación
 
-- `mapa.jpg`: Imagen del mapa utilizada en el proyecto.
+Para ejecutar la aplicación, simplemente ejecute:
 
-## Instalación y Uso
+```
+streamlit run app.py
+```
 
-1. Clona este repositorio:
-    ```sh
-    git clone https://github.com/tu-usuario/Proyecto-Investigacion.git
-    ```
+## Funcionalidades
 
-2. Navega al directorio del proyecto:
-    ```sh
-    cd Proyecto-Investigacion
-    ```
+- Predicción de lluvia basada en datos meteorológicos en tiempo real
+- Selección de ubicación mediante un mapa interactivo
+- Utilización de datos históricos desde la base de datos cuando la API no está disponible
+- Visualizaciones variadas de datos meteorológicos:
+  - Gráfico de radar para comparar variables meteorológicas
+  - Gráfico de barras para visualizar valores actuales
+  - Indicador tipo gauge para mostrar la probabilidad de lluvia
+  - Línea de tiempo para datos históricos
+  - Mapa de calor para visualizar correlaciones entre variables
+  - Diagrama de dispersión para analizar relaciones
 
-3. Instala las dependencias necesarias:
-    ```sh
-    pip install -r requirements.txt
-    ```
+## Extensión y Personalización
 
-4. Ejecuta los scripts de análisis:
-    ```sh
-    python IA/Prueba.py
-    python IA/wep.py
-    ```
+La estructura modular facilita la extensión y personalización de la aplicación:
 
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request para discutir cualquier cambio que desees realizar.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+- Para añadir nuevos tipos de visualizaciones, modifique la clase `WeatherVisualizer`
+- Para mejorar el modelo de predicción, modifique la clase `RainfallPredictor`
+- Para implementar nuevas fuentes de datos, modifique la clase `WeatherAPIClient`
+- Para añadir funcionalidades a la interfaz, modifique la clase `StreamlitApp`
