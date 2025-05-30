@@ -1,0 +1,13 @@
+Test de conexión LLM - 2025-05-30 14:02:52
+============================================================
+
+Configuración: ✓ EXITOSO
+Conexión básica: ✓ EXITOSO
+Funcionalidad: ✓ EXITOSO
+Rendimiento: ✓ EXITOSO
+
+Configuracion utilizada:
+  URL API: http://26.179.196.241:1234/v1
+  Modelo: l3-umbral-mind-rp-v0.3-8b
+  Max tokens: 1000
+  Temperature: 0.4

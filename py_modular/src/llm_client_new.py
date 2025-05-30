@@ -3,7 +3,7 @@ Cliente para interactuar con LM Studio para generar análisis de predicciones me
 """
 import requests
 from typing import Dict, Any, Optional
-from .config import config
+from config import config
 
 class LLMClient:
     def __init__(self):
